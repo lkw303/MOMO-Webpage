@@ -2,18 +2,42 @@
 <html>
 <head>
 <meta charset="utf-8" />
-
+<script type="text/javascript" src = "plotly.min.js"></script>
 <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
 <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
 
 
 </head>
 
 <body>
-  <h1>Simple roslib Example</h1>
-  <p>Check your Web Console for output.</p>
-  <input type="text" id="text" placeholder="Type your message">
-  <button id = "send">send</button>
-  <script src = "bridge.js"></script>
+  <banner>
+    <img id= "sutd" class = "sutd" src="SUTD.jpg"/>
+  </banner>
+  <div class = "header">
+    <h1 class ="momotext">MOMO</h1>
+    <p id ="p1">Type in a message to be displayed on the MOMO's LED display!.</p>
+    <input type="text" class = "text" id="text" placeholder="Type your message">
+    <input type= "submit" class="submit" id ="submit">
+  
+  </div>
+
+  <div class= "cmd_vel">
+    <bar id = "velocity" class="velocity">
+    </bar>
+    <p class = "cmd_vel_text">
+      
+    </p>
+  </div>
+  <div id ="chart" class = "chart">
+    <script>
+      Plotly.plot("chart",[{y:[getData()], type:"line"}])
+    </script>
+   
+  </div>
+  
+  
+<script src = "bridge.js"></script>
 </body>
 </html>

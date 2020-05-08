@@ -1,0 +1,73 @@
+#sutd{
+    height: auto;
+    width: 100px;
+    justify-content: flex-end;
+    display: inline-flex;
+
+
+
+}
+.banner{
+    margin-top: 0px;
+    display: block;
+    background: #ad4000;
+    position: fixed;
+    height: 300px;
+    width: auto%;
+}
+
+#p1{
+    color: cornsilk;
+}
+
+.momotext{
+    font-size: 100px;
+    color: blanchedalmond;
+}
+.header{
+    padding: 60px;
+    text-align: center;
+    background: #02362c;
+    color: white;
+    font-size: 30px;
+    color: black;
+
+
+}
+
+.text{
+    max-width: 200px;
+    width: auto;
+    height: 50px;
+    border-radius: 10px 0 0 10px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    display: inline-block;
+    border: none;
+    margin: none;
+
+
+}
+.submit{
+    position: relative;
+    left: -5px;
+    bottom: +2px;
+    max-width: 60px;
+    width: auto;
+    height: 52px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    background-color: #da7c11;
+    font-weight: bold;
+
+
+
+}
+p{
+}
+
+.velocity{
+ height: 30px;
+ color: #ad4000; 
+}

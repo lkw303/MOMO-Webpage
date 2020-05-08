@@ -50,7 +50,7 @@
 
   
 
-  let sendButton = document.getElementById("send");
+  let sendButton = document.getElementById("submit");
   var text = ''
   
   sendButton.onclick = function(){
@@ -63,6 +63,42 @@
 
     led.publish(newText);
   }
+
+  // Subscribing to command velocity
+
+  var cmd_vel = new ROSLIB.Topic({
+    ros: ros,
+    name: '/turtle1/cmd_vel',
+    messageType: 'geometry_msgs/Twist'
+
+
+  })
+  function print_vel(msg){
+          var currentTime=new Date();
+           var hours=currentTime.getHours();
+           var minutes=currentTime.getMinutes();
+           var seconds=currentTime.getSeconds();
+           var timeNow = hours+ ":" + minutes + ":"+ seconds ;
+    console.log(timeNow);
+    console.log(msg);
+    let abs_vel = ((msg.linear.x)**2 + (msg.linear.y)**2+ (msg.linear.z)**2)**0.5;
+    console.log(`The absolute velocity is ${abs_vel}`);
+    let ang_vel = msg.angular.z;
+    console.log(`The angular velocity is ${ang_vel}`);
+    document.getElementById("velocity").innerHTML = `Velocity  ${50*abs_vel} Angular Velocity: ${ang_vel}`;
+  }
+
+ 
+  cmd_vel.subscribe(function(msg){print_vel(msg)});
+
+  //displaying command velocity as a graph
+  function getData(){
+    velocity_array = cmd_vel.subscribe(function(msg){return [msg.linear.x, msg.linear.y];});
+    velocity =(velocity_array()[0]**2 + velocity_array()[1]
+**2)**0.5;
+    return velocity
+  };
+  
 
   
 
@@ -87,19 +123,3 @@
       + result.sum);
   });
 
-  // Getting and setting a param value
-  // ---------------------------------
-
-  ros.getParams(function(params) {
-    console.log(params);
-  });
-
-  var maxVelX = new ROSLIB.Param({
-    ros : ros,
-    name : 'max_vel_y'
-  });
-
-  maxVelX.set(0.8);
-  maxVelX.get(function(value) {
-    console.log('MAX VAL: ' + value);
-  });
