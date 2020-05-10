@@ -20,28 +20,7 @@
   // Publishing a Topic
   // ------------------
 
-  var cmdVel = new ROSLIB.Topic({
-    ros : ros,
-    name : '/cmd_vel',
-    messageType : 'geometry_msgs/Twist'
-  });
-
-  var twist = new ROSLIB.Message({
-    linear : {
-      x : 0.1,
-      y : 0.2,
-      z : 0.3
-    },
-    angular : {
-      x : -0.1,
-      y : -0.2,
-      z : -0.3
-    }
-  });
-  cmdVel.publish(twist);
-
-  
-
+ 
   var led = new ROSLIB.Topic({
     ros : ros,
     name : '/led',
@@ -73,6 +52,13 @@
 
 
   })
+
+  Plotly.plot("chart",[{
+    y:[0],
+    type:"line"
+    }]);
+
+  let run = true;
   function print_vel(msg){
           var currentTime=new Date();
            var hours=currentTime.getHours();
@@ -85,41 +71,69 @@
     console.log(`The absolute velocity is ${abs_vel}`);
     let ang_vel = msg.angular.z;
     console.log(`The angular velocity is ${ang_vel}`);
-    document.getElementById("velocity").innerHTML = `Velocity  ${50*abs_vel} Angular Velocity: ${ang_vel}`;
-  }
+    Plotly.extendTraces("chart",{y:[[abs_vel]]}, [0]);
 
- 
+   
+  }
   cmd_vel.subscribe(function(msg){print_vel(msg)});
 
+  
   //displaying command velocity as a graph
-  function getData(){
-    velocity_array = cmd_vel.subscribe(function(msg){return [msg.linear.x, msg.linear.y];});
-    velocity =(velocity_array()[0]**2 + velocity_array()[1]
-**2)**0.5;
-    return velocity
-  };
-  
 
-  
-
-  // Calling a service
-  // -----------------
-
-  var addTwoIntsClient = new ROSLIB.Service({
+ 
+   // Subscribing to the pose message
+   var pose = new ROSLIB.Topic({
     ros : ros,
-    name : '/add_two_ints',
-    serviceType : 'rospy_tutorials/AddTwoInts'
+    name : '/turtle1/pose',
+    messageType : 'turtlesim/Pose'
+  });
+  
+  pose.subscribe(function(position){
+
+    turtleBot.x = position.x;
+    turtleBot.y = -position.y;
+  })
+  
+
+  
+
+// creating a map
+//function init() {
+
+  // Create the main viewer.
+  var viewer = new ROS2D.Viewer({
+    divID : 'map',
+    width : 600,
+    height : 500
   });
 
-  var request = new ROSLIB.ServiceRequest({
-    a : 1,
-    b : 2
-  });
 
-  addTwoIntsClient.callService(request, function(result) {
-    console.log('Result for service call on '
-      + addTwoIntsClient.name
-      + ': '
-      + result.sum);
+  // Setup the map client.
+  var gridClient = new ROS2D.OccupancyGridClient({
+  ros : ros,
+  rootObject : viewer.scene
+});
+
+ // adding the arrow pose of turtleBot to the map
+ var turtleBot = new ROS2D.NavigationArrow({
+  size:5,
+  strokeSize: 0.5,
+  pulse: true
+})
+
+  gridClient.rootObject.addChild(turtleBot) ;
+
+
+  // Scale the canvas to fit to the map
+  gridClient.on('change', function(){
+    viewer.scaleToDimensions(gridClient.currentGrid.width, gridClient.currentGrid.height);
+  
   });
+  
+//}
+
+
+
+
+
 

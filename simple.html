@@ -5,39 +5,40 @@
 <script type="text/javascript" src = "plotly.min.js"></script>
 <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
 <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-
+<script type="text/javascript" src="http://static.robotwebtools.org/EaselJS/current/easeljs.min.js"></script>
+<script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+<script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+<script type="text/javascript" src="http://static.robotwebtools.org/ros2djs/current/ros2d.min.js"></script>
 <link rel="stylesheet" href="style.css">
 
 
 </head>
 
-<body>
-  <banner>
+<body >
+
+<div class = "banner" id= "banner">
     <img id= "sutd" class = "sutd" src="SUTD.jpg"/>
-  </banner>
+    <img src="soar.png"  class= "soar id ="soar"/>
+</div>
+  
   <div class = "header">
     <h1 class ="momotext">MOMO</h1>
     <p id ="p1">Type in a message to be displayed on the MOMO's LED display!.</p>
     <input type="text" class = "text" id="text" placeholder="Type your message">
     <input type= "submit" class="submit" id ="submit">
-  
   </div>
 
-  <div class= "cmd_vel">
-    <bar id = "velocity" class="velocity">
-    </bar>
-    <p class = "cmd_vel_text">
-      
-    </p>
-  </div>
-  <div id ="chart" class = "chart">
-    <script>
-      Plotly.plot("chart",[{y:[getData()], type:"line"}])
-    </script>
-   
+  <div class="parent">
+
+    <div id ="chart" class = "chart">
+    </div>
+
+    <div id = "map"></div>
+
   </div>
   
   
 <script src = "bridge.js"></script>
 </body>
 </html>
+

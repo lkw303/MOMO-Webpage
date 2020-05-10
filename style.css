@@ -1,20 +1,51 @@
-#sutd{
-    height: auto;
-    width: 100px;
-    justify-content: flex-end;
-    display: inline-flex;
 
-
+.container{
+    display: grid;
+    grid-template-rows: 50px 300px 300px;
+    
 
 }
+
+
+/* banner block*/
+
 .banner{
-    margin-top: 0px;
-    display: block;
-    background: #ad4000;
-    position: fixed;
-    height: 300px;
-    width: auto%;
+    
+    height: 20px;
+    width: auto;
 }
+
+.sutd{
+    height: 50px;
+    width: 100px;
+    
+
+}
+
+.soar{
+    height: 50px;
+    width: 50px;
+    
+
+}
+
+
+
+/* bar block*/
+
+/* header block*/
+.header{
+    
+    text-align: center;
+    background: #02362c;
+    color: white;
+    font-size: 30px;
+    color: black;
+    display: block;
+    justify-self: stretch;
+    align-self:stretch;
+}
+
 
 #p1{
     color: cornsilk;
@@ -23,17 +54,10 @@
 .momotext{
     font-size: 100px;
     color: blanchedalmond;
+    margin-top: 50px;
 }
-.header{
-    padding: 60px;
-    text-align: center;
-    background: #02362c;
-    color: white;
-    font-size: 30px;
-    color: black;
 
 
-}
 
 .text{
     max-width: 200px;
@@ -44,9 +68,7 @@
     font-family: Arial, Helvetica, sans-serif;
     border: none;
     display: inline-block;
-    border: none;
-    margin: none;
-
+   
 
 }
 .submit{
@@ -57,17 +79,34 @@
     width: auto;
     height: 52px;
     border-radius: 0 10px 10px 0;
-    border: none;
     background-color: #da7c11;
     font-weight: bold;
+    margin-bottom: 50px;
 
 
 
 }
-p{
+/* header block*/
+
+
+/* diagrams block*/
+
+.parent{
+    display: flex;
+    justify-content: space-around;
+    
+
+
+.chart{
+    display: block;
+
 }
 
-.velocity{
- height: 30px;
- color: #ad4000; 
+#map{
+    display: block;
 }
+
+
+}
+
+/* diagrams block*/
