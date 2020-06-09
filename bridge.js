@@ -47,7 +47,7 @@
 
   var cmd_vel = new ROSLIB.Topic({
     ros: ros,
-    name: '/turtle1/cmd_vel',
+    name: '/cmd_vel',
     messageType: 'geometry_msgs/Twist'
 
 
@@ -84,14 +84,14 @@
    // Subscribing to the pose message
    var pose = new ROSLIB.Topic({
     ros : ros,
-    name : '/turtle1/pose',
-    messageType : 'turtlesim/Pose'
+    name : '/robot_pose',
+    messageType : 'geometry_msgs/Pose'
   });
   
   pose.subscribe(function(position){
 
-    turtleBot.x = position.x;
-    turtleBot.y = -position.y;
+    turtleBot.x = position.position.x;
+    turtleBot.y = position.position.y;
   })
   
 
@@ -116,8 +116,8 @@
 
  // adding the arrow pose of turtleBot to the map
  var turtleBot = new ROS2D.NavigationArrow({
-  size:5,
-  strokeSize: 0.5,
+  size:0.001,
+  strokeSize: 0.1,
   pulse: true
 })
 
