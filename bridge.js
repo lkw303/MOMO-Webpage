@@ -94,7 +94,6 @@
     turtleBot.y = position.position.y;
   })
   
-
   
 
 // creating a map
@@ -104,7 +103,9 @@
   var viewer = new ROS2D.Viewer({
     divID : 'map',
     width : 600,
-    height : 500
+    height : 500,
+
+
   });
 
 
