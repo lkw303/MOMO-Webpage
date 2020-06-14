@@ -244,11 +244,18 @@ Install the Turtlebot3 simulator> Instructions in the link below
 >https://automaticaddison.com/how-to-launch-the-turtlebot3-simulation-with-ros/
 
 <br><br/>
+```
+sudo apt-get install ros-<rosdistro>-robot-pose-publisher
+```
+install robot_pose package
+<br>
 
 ```
 sudo apt-get install ros-<rosdistro>-visualization
 ```
 install rviz
+<br>
+
 
 ```
 sudo apt-get install ros-<rosdistro>-rosbridge-suite
