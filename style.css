@@ -131,7 +131,6 @@ body{
 }
 
 #map{
-    align-items: center;
     grid-area: map;
 
   

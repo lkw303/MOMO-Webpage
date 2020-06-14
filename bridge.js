@@ -112,7 +112,8 @@
   // Setup the map client.
   var gridClient = new ROS2D.OccupancyGridClient({
   ros : ros,
-  rootObject : viewer.scene
+  rootObject : viewer.scene,
+  viewer: viewer
 });
 
  // adding the arrow pose of turtleBot to the map
@@ -128,6 +129,7 @@
   // Scale the canvas to fit to the map
   gridClient.on('change', function(){
     viewer.scaleToDimensions(gridClient.currentGrid.width, gridClient.currentGrid.height);
+    viewer.shift(gridClient.currentGrid.pose.position.x, gridClient.currentGrid.pose.position.y);
   
   });
   

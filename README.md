@@ -9,12 +9,59 @@ Using the ROS-JS library, the webpage publishle messages users input intp the pa
 The code for the Arduino Unos can be found in my ROS Neopixel Matrix repository.
 
 ## Instructions
-> roscore
+```
+roscore
+```
+runs the ROS Master
+<br>
 
-> rosrun rosserial_python serial_node.py
+```
+rosrun rosserial_python serial_node.py
+```
+runs the rosserial python node
+<br>
 
-> roslaunch rosbridge_server rosbridge_websocket.launch
+```
+roslaunch rosbridge_server rosbridge_websocket.launch
+```
+runs rosbridge
+<br>
 
+```
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+```
+launches the simulated turtlebot3_world on gazebo
+<br>
+
+```
+roslaunch turtlebot3_gazebo turtlebot3_house.launch
+```
+another option for the type of "world" to launch. this on is in a "home" setting
+<br>
+
+```
+rosrun robot_pose_publisher robot_pose_publisher
+```
+rosruns the robot_pose_publisher node to publish the robot's position to be displayed on the map
+
+```
+roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+```
+starts SLAM which maps the environent
+<br>
+
+
+
+```
+roslaunch turtlebot3_gazebo turtlebot3_simulation.launch
+```
+This starts the autonomous navigation of the robot.
+<br>
+
+```
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+Another option is to manually control the robot using the telop keys the robot by running the command below.
 ## Code
 
 ### HTML
@@ -193,3 +240,23 @@ var pose = new ROSLIB.Topic({
 
 
 ## Dependencies
+Install the Turtlebot3 simulator> Instructions in the link below
+>https://automaticaddison.com/how-to-launch-the-turtlebot3-simulation-with-ros/
+
+<br><br/>
+
+```
+sudo apt-get install ros-<rosdistro>-visualization
+```
+install rviz
+
+```
+sudo apt-get install ros-<rosdistro>-rosbridge-suite
+```
+install rosbridge
+<br>
+
+```
+sudo apt install ros-<rosdistro>-slam-gmapping
+```
+install ros slam module
