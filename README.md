@@ -28,6 +28,12 @@ runs rosbridge
 <br></br>
 
 ```
+rosrun web_video_serv web_video_server
+```
+runs the web video server to display robot's camera output on webpage
+<br></br>
+
+```
 roslaunch turtlebot3_gazebo turtlebot3_world.launch
 ```
 launches the simulated turtlebot3_world on gazebo
@@ -244,25 +250,31 @@ var pose = new ROSLIB.Topic({
 Install the Turtlebot3 simulator> Instructions in the link below
 >https://automaticaddison.com/how-to-launch-the-turtlebot3-simulation-with-ros/
 
-<br><br/>
+<br></br>
 ```
 sudo apt-get install ros-<rosdistro>-robot-pose-publisher
 ```
 install robot_pose package
-<br>
+<br></br>
 
 ```
 sudo apt-get install ros-<rosdistro>-visualization
 ```
 install rviz
-<br>
+<br></br>
 
 
 ```
 sudo apt-get install ros-<rosdistro>-rosbridge-suite
 ```
 install rosbridge
-<br>
+<br></br>
+
+```
+sudo apt-get install ros-<rosdistro>-web-video-server
+```
+install ros video server
+<br></br>
 
 ```
 sudo apt install ros-<rosdistro>-slam-gmapping

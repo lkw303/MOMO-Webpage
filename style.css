@@ -19,7 +19,44 @@ body{
 
 }
 
+nav{
+    float: right;
+    margin-right: 20px;
+}
+nav ul{
+    list-style: none;
+    
+}
+nav li{
+    display: inline-block;
+    margin-left: 70px;
+    position: relative;
 
+}
+nav a{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover{
+    color: brown;
+}
+
+nav a::before{
+    content:'';
+    display: block;
+    height: 2.5px;
+    width: 0%;
+    background-color: black;
+
+    position: absolute;
+    transition: all ease-in-out 250ms
+}
+
+nav a:hover::before{
+    width: 100%;
+}
 /* banner block*/
 
 .banner{
@@ -112,9 +149,10 @@ body{
     background-color:#5E1111 ;
     font-weight: bold;
     margin: 10px;
+}
 
-
-
+.submit:hover{
+    background-color: rgb(165, 89, 89);
 }
 /* header block*/
 
